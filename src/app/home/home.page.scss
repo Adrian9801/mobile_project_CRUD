@@ -1,0 +1,42 @@
+.center {
+  text-align: center;
+}
+
+.textItems {
+  white-space: normal;
+  font-family: 'Roboto', sans-serif;
+  font-style: 'Regular';
+  color: black;
+}
+
+.title {
+  white-space: normal;
+  font-family: 'Roboto', sans-serif;
+  font-style: 'Regular';
+  fill: solid;
+  text-align: center;
+  color: black;
+}
+
+.colorText{
+  color: black;
+}
+
+.card {
+  margin: 20px auto;
+  width: 70%;
+  min-width: 300px;
+  background-color: white
+}
+
+.listItems{
+  --ion-item-background: white;
+}
+
+.whiteColor{
+  background-color: white;
+}
+
+ion-content {
+  --ion-background-color:#E5E5E5;
+}
