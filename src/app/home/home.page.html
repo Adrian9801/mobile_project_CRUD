@@ -41,7 +41,7 @@
            <!--  Count input -->
            <ion-item>
             <ion-label class="colorText" position="floating"><ion-icon name="bar-chart-outline"></ion-icon>Escriba la cantidad</ion-label>
-            <ion-input class="colorText" (keypress)="numberOnlyValidation($event)" formControlName="cantidad" type="text" placeholder="Escriba la cantidad aquí"></ion-input>
+            <ion-input class="colorText" (keypress)="numberOnlyValidation($event)" formControlName="cantidad" type="number" placeholder="Escriba la cantidad aquí"></ion-input>
           </ion-item>
 
           <!-- Validation incorrect -->
@@ -55,20 +55,8 @@
       
       <ion-card-title class='title'>Lista de Productos</ion-card-title>
       <ion-list class='listItems'>
-        <ion-item>
-          <ion-label class="textItems">Pokémon Yellow</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label class="textItems">Mega Man X</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label class="textItems">The Legend of Zelda</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label class="textItems">Pac-Man</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label class="textItems">Super Mario World</ion-label>
+        <ion-item  *ngFor="let product of productList"> 
+          <ion-label class="textItems">{{product.nombre}}</ion-label>
         </ion-item>
       </ion-list>
     </ion-card-content>

@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors, 
 })
 export class HomePage {
   ProductForm: FormGroup;
+  productList = [{nombre: "Juana"}, {nombre: "Marcos"}, {nombre: "Pedro"}, {nombre: "Lopez"}, {nombre: "Maria"}, {nombre: "Sebastian"}];
 
   constructor(private fb: FormBuilder) {
     this.ProductForm = this.fb.group({
