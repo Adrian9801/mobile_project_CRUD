@@ -233,4 +233,16 @@
 
     --ion-card-background: #1e1e1e;
   }
+
+  .alertCustom {
+    --background: white;
+    //this works for alertHeader when inspecting in the browser
+    .alert-title.sc-ion-alert-md {
+      color: #000000;
+    }
+
+    button.alert-button.buttonAlertDelete{
+      color: red;
+    }
+  }  
 }

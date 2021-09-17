@@ -37,6 +37,21 @@
   background-color: white;
 }
 
+.top-margin {
+  margin-top: 30px;
+}
+
+.grid {
+  width: 100%;
+  grid-template-columns: 50% 50%;
+}
+
+.buttonsItems {
+  float: right;
+  padding-right: 10px;
+  vertical-align: Center;
+}
+
 ion-content {
   --ion-background-color:#E5E5E5;
 }
