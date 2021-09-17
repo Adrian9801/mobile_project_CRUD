@@ -1,5 +1,7 @@
 {
-  "name": "ionic-app-base",
-  "integrations": {},
+  "name": "mobile_project_CRUD",
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

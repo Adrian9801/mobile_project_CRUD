@@ -1,6 +1,6 @@
 {
-  "name": "ionic-app-base",
-  "version": "0.0.0",
+  "name": "mobile_project_CRUD",
+  "version": "0.0.1",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
   "scripts": {
@@ -19,11 +19,13 @@
     "@angular/platform-browser": "~12.1.1",
     "@angular/platform-browser-dynamic": "~12.1.1",
     "@angular/router": "~12.1.1",
-    "@capacitor/camera": "^1.1.0",
-    "@capacitor/filesystem": "^1.0.3",
-    "@capacitor/storage": "^1.2.0",
+    "@capacitor/android": "^3.2.3",
+    "@capacitor/app": "1.0.3",
+    "@capacitor/core": "3.2.3",
+    "@capacitor/haptics": "1.0.3",
+    "@capacitor/keyboard": "1.0.3",
+    "@capacitor/status-bar": "1.0.3",
     "@ionic/angular": "^5.5.2",
-    "@ionic/pwa-elements": "^3.0.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
@@ -38,6 +40,7 @@
     "@angular/compiler": "~12.1.1",
     "@angular/compiler-cli": "~12.1.1",
     "@angular/language-service": "~12.0.1",
+    "@capacitor/cli": "3.2.3",
     "@ionic/angular-toolkit": "^4.0.0",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.3",
@@ -59,5 +62,6 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "typescript": "~4.2.4"
-  }
+  },
+  "description": "An Ionic project"
 }
