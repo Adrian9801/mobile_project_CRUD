@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar class="headerColor">
     <ion-title>
-      Blank
+      Inventario de productos
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -51,7 +51,7 @@
 
         </ion-list>
       </form>
-      <!--  Login button -->
+      <!--  Add button -->
       <ion-button mode="ios" size="large" class="top-margin" expand="full" color="primary" (click)="addProduct()">
         Agregar producto
       </ion-button>
@@ -69,7 +69,7 @@
               </ion-col>
               <ion-col>
                 <ion-icon size="large" color="danger" class="textItems buttonsItems" name="trash" (click)='presentAlertDelete(product.codigo)'></ion-icon>
-                <ion-icon size="large" color="primary" class="textItems buttonsItems" name="create"></ion-icon>
+                <ion-icon size="large" color="primary" class="textItems buttonsItems" name="create" (click)='presentModalUpdateProduct(product)'></ion-icon>
               </ion-col>
             </ion-row>
           </ion-grid>

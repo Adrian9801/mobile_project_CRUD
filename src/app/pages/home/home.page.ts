@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Product } from 'src/app/models/product';
 import { AlertController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
+import { UpdateProductPage } from '../update-product/update-product.page';
 
 @Component({
   selector: 'app-home',
@@ -10,9 +12,9 @@ import { AlertController } from '@ionic/angular';
 })
 export class HomePage {
   private ProductForm: FormGroup;
-  private productList: Product[] = [];
+  public productList: Product[] = [];
 
-  constructor(private fb: FormBuilder, private alertController: AlertController) {
+  constructor(private modalController: ModalController, private fb: FormBuilder, private alertController: AlertController) {
     this.ProductForm = this.fb.group({
       codigo: [null, [Validators.required, Validators.minLength(1)]],
       nombre: [null, [Validators.required, Validators.minLength(1)]],
@@ -44,6 +46,29 @@ export class HomePage {
     await alert.present();
   }
 
+  async presentAlertAdd() {
+    const alert = await this.alertController.create({
+      cssClass: 'alertCustom',
+      header: 'No se agrego el producto',
+      message: 'El código del producto ya existe.',
+      buttons: ['Entendido']
+    });
+
+    await alert.present();
+  }
+
+  async presentModalUpdateProduct(product: Product) {
+    const modal = await this.modalController.create({
+      component: UpdateProductPage,
+      componentProps: {
+        'product': product,
+        'productList': this.productList
+      },
+      cssClass: 'my-custom-class'
+    });
+    return await modal.present();
+  }
+
   deleteProduct(codeProduct: String){
     this.productList.forEach((element,index)=>{
       if(element.codigo == codeProduct) this.productList.splice(index,1);
@@ -62,11 +87,20 @@ export class HomePage {
   addProduct(){
     if(this.ProductForm.valid) {
       if(this.ProductForm.value.cantidad >= 0){
+        let code = '';
+        this.productList.forEach((element)=>{
+          if(element.codigo == this.ProductForm.value.codigo) {
+            code = element.codigo ;
+            this.presentAlertAdd();
+            return;
+          }
+        });
+        if(code == this.ProductForm.value.codigo)
+          return;
         let product: Product = new Product(this.ProductForm.value.codigo, this.ProductForm.value.nombre, this.ProductForm.value.cantidad);
         this.productList.push(product);
         this.ProductForm.reset();
       }
     }
   }
-
 }

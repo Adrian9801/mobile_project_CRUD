@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+.headerColor{
+  --background: #0f477a;
+}
+
 .textItems {
   white-space: normal;
   font-family: 'Roboto', sans-serif;
@@ -25,8 +29,8 @@
 .card {
   margin: 20px auto;
   width: 70%;
-  min-width: 300px;
-  background-color: white
+  min-width: 200px;
+  background-color: white;
 }
 
 .listItems{
