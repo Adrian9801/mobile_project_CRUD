@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
+  <ion-toolbar class="headerColor">
+    <ion-title class="headerTextColor">
+      Inventario de productos
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -51,12 +51,28 @@
 
         </ion-list>
       </form>
+      <!--  Add button -->
+      <ion-button mode="ios" size="large" class="top-margin" expand="full" color="primary" (click)="addProduct()">
+        Agregar producto
+      </ion-button>
       <br><br>
       
       <ion-card-title class='title'>Lista de Productos</ion-card-title>
       <ion-list class='listItems'>
-        <ion-item  *ngFor="let product of productList"> 
-          <ion-label class="textItems">{{product.nombre}}</ion-label>
+        <ion-item  *ngFor="let product of productList">
+          <ion-grid class="grid">
+            <ion-row class="grid">
+              <ion-col>
+                <ion-label class="textItems">Código: {{product.codigo}}</ion-label>
+                <ion-label class="textItems">{{product.nombre}}</ion-label>
+                <ion-label class="textItems">Cantidad: {{product.cantidad}}</ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-icon size="large" color="danger" class="textItems buttonsItems" name="trash" (click)='presentAlertDelete(product.codigo)'></ion-icon>
+                <ion-icon size="large" color="primary" class="textItems buttonsItems" name="create" (click)='presentModalUpdateProduct(product)'></ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
         </ion-item>
       </ion-list>
     </ion-card-content>
