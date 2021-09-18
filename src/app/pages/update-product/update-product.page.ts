@@ -28,6 +28,15 @@ export class UpdateProductPage implements OnInit {
   ngOnInit() {
   }
 
+  numberOnlyValidation(event: KeyboardEvent) {
+    let pattern = /[0-9]/;
+    let inputChar = String.fromCharCode(event.charCode);
+
+    if (!pattern.test(inputChar)) {
+      event.preventDefault();
+    }
+  }
+
   async presentAlertAdd() {
     const alert = await this.alertController.create({
       cssClass: 'alertCustom',
@@ -39,7 +48,7 @@ export class UpdateProductPage implements OnInit {
     await alert.present();
   }
 
-  addProduct(){
+  updateProduct(){
     if(this.ProductForm.valid) {
       if(this.ProductForm.value.cantidad >= 0){
         let code = '';
