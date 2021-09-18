@@ -2,6 +2,14 @@
   text-align: center;
 }
 
+.headerColor{
+  --background: #0f477a;
+}
+
+.headerTextColor{
+  color: white;
+}
+
 .textItems {
   white-space: normal;
   font-family: 'Roboto', sans-serif;
@@ -24,9 +32,9 @@
 
 .card {
   margin: 20px auto;
-  width: 70%;
-  min-width: 300px;
-  background-color: white
+  width: 80%;
+  min-width: 200px;
+  background-color: white;
 }
 
 .listItems{
@@ -35,6 +43,21 @@
 
 .whiteColor{
   background-color: white;
+}
+
+.top-margin {
+  margin-top: 30px;
+}
+
+.grid {
+  width: 100%;
+  grid-template-columns: 50% 50%;
+}
+
+.buttonsItems {
+  float: right;
+  padding-right: 10px;
+  vertical-align: Center;
 }
 
 ion-content {
