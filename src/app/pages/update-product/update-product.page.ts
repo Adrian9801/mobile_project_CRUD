@@ -4,18 +4,20 @@ import { ModalController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { Product } from 'src/app/models/product';
 import { NavParams } from '@ionic/angular';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-update-product',
   templateUrl: './update-product.page.html',
   styleUrls: ['./update-product.page.scss'],
+  providers: [ProductService]
 })
 export class UpdateProductPage implements OnInit {
   private ProductForm: FormGroup;
   private product: Product;
   private productList: Product[];
 
-  constructor(private navParams: NavParams, private modalController: ModalController, private fb: FormBuilder, private alertController: AlertController) {
+  constructor(private productService: ProductService, private navParams: NavParams, private modalController: ModalController, private fb: FormBuilder, private alertController: AlertController) {
     this.product = navParams.get('product');
     this.productList = navParams.get('productList');
     this.ProductForm = this.fb.group({
@@ -48,6 +50,17 @@ export class UpdateProductPage implements OnInit {
     await alert.present();
   }
 
+  async errorAlertAdd(msg: string) {
+    const alert = await this.alertController.create({
+      cssClass: 'alertCustom',
+      header: 'Error',
+      message: msg,
+      buttons: ['Entendido']
+    });
+
+    await alert.present();
+  }
+
   updateProduct(){
     if(this.ProductForm.valid) {
       if(this.ProductForm.value.cantidad >= 0){
@@ -61,12 +74,21 @@ export class UpdateProductPage implements OnInit {
         });
         if(code == this.ProductForm.value.codigo)
           return;
-        this.product.codigo = this.ProductForm.value.codigo;
-        this.product.nombre = this.ProductForm.value.nombre;
-        this.product.cantidad = this.ProductForm.value.cantidad;
-        this.ProductForm.reset();
-
-        this.closeModal();
+        this.productService.updateProduct({codigo: this.ProductForm.value.codigo, nombre: this.ProductForm.value.nombre, cantidad: this.ProductForm.value.cantidad, codigoAnt: this.product.codigo}).subscribe(res => {
+          if(res[0][0].result == 'correct'){
+            this.product.codigo = this.ProductForm.value.codigo;
+            this.product.nombre = this.ProductForm.value.nombre;
+            this.product.cantidad = this.ProductForm.value.cantidad;
+            this.ProductForm.reset();
+            this.closeModal();
+          }
+          else{
+            if(res[0][0].result == 'failConect')
+              this.errorAlertAdd('No se pudo conectar con la base de datos');
+            else
+              this.errorAlertAdd('No se pudo actualizar el producto');
+          }
+        });
       }
     }
   }

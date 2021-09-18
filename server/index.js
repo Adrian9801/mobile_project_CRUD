@@ -33,16 +33,17 @@ app.get('/Products', function(req, res) {
   if(!isConnect){
     connectMYSQL();
     if(!isConnect){
-      res.send([{result: 'failConect'}]);
+      res.send([[{result: 'failConect'}]]);
       return;
     }
   }
   var sql = 'SELECT * FROM productos';
   con.query(sql, function (err, rows) {
     if (err) 
-      res.send([{result: 'error'}]);
+      res.send([[{result: 'error'}]]);
     else{
-      rows.push({result: 'correct'});
+      rows = [rows];
+      rows.push([{result: 'correct'}]);
       res.send(rows);
     }
   });
@@ -52,19 +53,17 @@ app.post('/UpadateProduct', function(req, res) {
   if(!isConnect){
     connectMYSQL();
     if(!isConnect){
-      res.send([{result: 'failConect'}]);
+      res.send([[{result: 'failConect'}]]);
       return;
     }
   }
   var request = req.body;
-  var sql = "UPDATE productos SET codigo = " + mysql.escape(request.codigo) + ", nombre = " + mysql.escape(request.nombre) + ", cantidad = " + mysql.escape(request.canidad) + "WHERE codigo = " +  mysql.escape(request.codigoAnt);
+  var sql = "UPDATE productos SET codigo = " + mysql.escape(request.codigo) + ", nombre = " + mysql.escape(request.nombre) + ", cantidad = " + mysql.escape(request.cantidad) + " WHERE codigo = " +  mysql.escape(request.codigoAnt);
   con.query(sql, function (err, rows) {
     if (err)
-      res.send([{result: 'error'}]);
-    else {
-      rows.push({result: 'correct'});
-      res.send(rows);
-    }
+      res.send([[{result: 'error'}]]);
+    else 
+      res.send([[{result: 'correct'}]]);
   });
 });
 
@@ -72,16 +71,16 @@ app.get('/deleteProduct/:codigo', function(req, res) {
   if(!isConnect){
     connectMYSQL();
     if(!isConnect){
-      res.send([{result: 'failConect'}]);
+      res.send([[{result: 'failConect'}]]);
       return;
     }
   }
   var sql = 'DELETE FROM productos WHERE codigo = ' + mysql.escape(req.params.codigo);
   con.query(sql, function (err, result) {
     if (err)
-      res.send([{result: 'error'}]);
+      res.send([[{result: 'error'}]]);
     else
-      res.send([{result: 'correct'}]);
+      res.send([[{result: 'correct'}]]);
   });
 });
 
@@ -89,18 +88,18 @@ app.post('/InsertProduct', function(req, res) {
   if(!isConnect){
     connectMYSQL();
     if(!isConnect){
-      res.send([{result: 'failConect'}]);
+      res.send([[{result: 'failConect'}]]);
       return;
     }
   }
 
   var request = req.body;
-  var sql = "INSERT INTO productos (codigo, nombre, cantidad) VALUES (" + mysql.escape(request.codigo) + ", " + mysql.escape(request.codigo) + ", " + mysql.escape(request.cantidad) + ")";
+  var sql = "INSERT INTO productos (codigo, nombre, cantidad) VALUES (" + mysql.escape(request.codigo) + ", " + mysql.escape(request.nombre) + ", " + mysql.escape(request.cantidad) + ")";
   con.query(sql, function (err, result) {
     if (err)
-      res.send([{result: 'error'}]);
+      res.send([[{result: 'error'}]]);
     else
-      res.send([{result: 'correct'}]);
+      res.send([[{result: 'correct'}]]);
   });
 });
   
