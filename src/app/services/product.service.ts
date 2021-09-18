@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/Http'
+
 
 @Injectable({
   providedIn: 'root'
@@ -7,21 +7,21 @@ import { HttpClient } from '@angular/common/Http'
 export class ProductService {
   private readonly URL_API = 'http://localhost:8090';
 
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
   getProducts(){
-    return this.http.get(this.URL_API+ '/Products');
+    
   }
 
   updateProduct(procduct){
-    return this.http.post(this.URL_API + '/UpadateProduct', procduct);
+    
   }
 
   insertProduct(procduct){
-    return this.http.post(this.URL_API + '/InsertProduct', procduct);
+  
   }
 
   deleteProduct(codigo: string){
-    return this.http.get(this.URL_API+ '/deleteProduct' + `/${codigo}`);
+    
   }
 }
