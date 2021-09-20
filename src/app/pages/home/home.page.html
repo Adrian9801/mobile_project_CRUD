@@ -1,8 +1,18 @@
 <ion-header [translucent]="true">
   <ion-toolbar class="headerColor">
-    <ion-title class="headerTextColor">
-      Inventario de productos
-    </ion-title>
+    <ion-grid class="gridHeader">
+      <ion-row class="gridHeader">
+        <ion-col>
+          <ion-label class="headerTextColor">
+            Inventario de productos
+          </ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-icon *ngIf='!load' size="large" color="dark" class="buttonsItems" name="refresh" (click)='loadProducts()'></ion-icon>
+          <ion-spinner *ngIf='load' class="buttonsItems loadProducts" name="lines"></ion-spinner>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-toolbar>
 </ion-header>
 

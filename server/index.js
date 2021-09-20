@@ -13,6 +13,13 @@ var con = mysql.createConnection({
   database: "inventario"
 });
 
+/*var con = mysql.createConnection({
+  host: "mysql5046.site4now.net",
+  user: "a79446_mobile",
+  password: "admin123",
+  database: "db_a79446_mobile"
+});*/
+
 connectMYSQL();
 
 function connectMYSQL(){

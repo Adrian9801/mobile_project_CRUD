@@ -15,6 +15,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class HomePage {
   private ProductForm: FormGroup;
   private productList: Product[] = [];
+  private load = false;
 
   constructor(private productService: ProductService, private modalController: ModalController, private fb: FormBuilder, private alertController: AlertController) {
     this.ProductForm = this.fb.group({
@@ -26,6 +27,8 @@ export class HomePage {
   }
 
   loadProducts(){
+    this.load = true;
+    this.productList = [];
     this.productService.getProducts().subscribe(res => {
       let listResult = res as Object[][];
       if(listResult.length > 1){
@@ -37,6 +40,7 @@ export class HomePage {
         else
           this.errorAlertAdd('No se pudo obtener los productos');
       }
+      this.load = false;
     });
   }
 

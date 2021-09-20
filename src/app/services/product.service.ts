@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/Http'
   providedIn: 'root'
 })
 export class ProductService {
-  private readonly URL_API = 'http://localhost:8090';
+  private readonly URL_API = 'https://ancient-beyond-04257.herokuapp.com';
 
   constructor(private http: HttpClient) { }
 

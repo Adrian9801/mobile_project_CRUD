@@ -8,6 +8,16 @@
 
 .headerTextColor{
   color: white;
+  white-space: normal;
+  font-family: 'Roboto', sans-serif;
+  font-style: 'Regular';
+  fill: solid;
+  text-align: center;
+  font-size: 20px;
+}
+
+.loadProducts {
+  --color: white;
 }
 
 .textItems {
@@ -52,6 +62,11 @@
 .grid {
   width: 100%;
   grid-template-columns: 50% 50%;
+}
+
+.gridHeader {
+  width: 100%;
+  grid-template-columns: 90% 10%;
 }
 
 .buttonsItems {
